@@ -5,6 +5,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"strings"
 )
 
 /*
@@ -36,15 +37,22 @@ func main() {
 */
 func main() {
 	msg := flag.String("msg", "Howdy, Stranger", "the message to display")
-	num := flag.Int("num", 1, "how many time to print the message")
-	caps := flag.Bool("caps", false, "should the string be all caps")
+	num := flag.Int("num", 3, "how many time to print the message")
+	caps := flag.Bool("U", false, "specific to uppercase the string")
+	//caps := flag.Bool("caps", false, "should the string be all caps")
 	flag.Parse()
+
+	//check if it's uppercase before printing it
+	if *caps {
+		*msg = strings.ToUpper(*msg)
+	}
+
+	// print the s string
 	for i := 0; i < *num; i++ {
 		fmt.Println(*msg)
 	}
-	//check if user set the flag
-	fmt.Println(*msg)
-	fmt.Println(*caps)
-}
 
-//gggmn
+	//check if user set the flag
+	/*fmt.Println(*msg)
+	fmt.Println(*caps)*/
+}
