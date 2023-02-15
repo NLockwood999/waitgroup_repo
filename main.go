@@ -3,10 +3,11 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-	"sync"
 )
 
+/*
 func one(WG *sync.WaitGroup) {
 	defer WG.Done()
 	fmt.Println("guten tag")
@@ -28,7 +29,22 @@ func main() {
 	go two(&WG)
 	go three(&WG)
 
-	//LETS DELAY
+	//application of waitgroups
 	WG.Wait()
 
 }
+*/
+func main() {
+	msg := flag.String("msg", "Howdy, Stranger", "the message to display")
+	num := flag.Int("num", 1, "how many time to print the message")
+	caps := flag.Bool("caps", false, "should the string be all caps")
+	flag.Parse()
+	for i := 0; i < *num; i++ {
+		fmt.Println(*msg)
+	}
+	//check if user set the flag
+	fmt.Println(*msg)
+	fmt.Println(*caps)
+}
+
+//gggmn
